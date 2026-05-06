@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MudBlazor.Services;
 
 namespace GymQuest
 {
@@ -19,6 +20,10 @@ namespace GymQuest
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
+
+
+            builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddMudServices();
 #endif
 
             return builder.Build();
