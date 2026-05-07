@@ -1,0 +1,94 @@
+@page "/routines"
+
+@using GymQuest.Models.Dtos
+@inject HttpClient Http
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+
+    <MudPaper Class="d-flex justify-space-around flex-grow-1 gap-4 align-content-center" Elevation="0">
+        <MudPaper Class="mud-theme-primary" Width="30px" Height="30px" />
+
+        <MudText Typo="Typo.h4">
+            Routines
+        </MudText>
+
+        <MudFab Color="Color.Dark" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" />
+    </MudPaper>
+
+
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error">
+            @errorMessage
+        </MudAlert>
+    }
+    else if (routines is null)
+    {
+        <MudProgressCircular Indeterminate="true" />
+    }
+    else if (routines.Count == 0)
+    {
+        <MudAlert Severity="Severity.Info">
+            Geen routines gevonden.
+        </MudAlert>
+    }
+    else
+    {
+        @foreach (var routine in routines)
+        {
+            <MudPaper Class="pa-4 mb-4" Elevation="2">
+                <MudText Typo="Typo.h5">
+                    @routine.Name
+                </MudText>
+
+                <MudText Typo="Typo.body2" Class="mb-3">
+                    @routine.Description
+                </MudText>
+
+                <MudDivider Class="my-3" />
+
+                @foreach (var exercise in routine.Exercises.OrderBy(e => e.OrderIndex))
+                {
+                    <MudPaper Class="pa-3 mb-2" Outlined="true">
+
+                        <MudText Typo="Typo.subtitle1">
+                            @exercise.OrderIndex. @exercise.ExerciseName
+                        </MudText>
+
+                        <MudText Typo="Typo.caption">
+                            @exercise.MuscleGroup • @exercise.Category • @exercise.BaseXP XP per set
+                        </MudText>
+
+                        @foreach (var set in exercise.Sets.OrderBy(s => s.SetNumber))
+                        {
+                            <MudText Typo="Typo.body2">
+                                Set @set.SetNumber:
+                                @(set.TargetWeight.HasValue ? $"{set.TargetWeight}kg" : "Bodyweight")
+                                x @set.TargetReps reps
+                            </MudText>
+                        }
+
+                    </MudPaper>
+                }
+            </MudPaper>
+        }
+    }
+
+</MudContainer>
+
+@code {
+    private List<RoutineDto>? routines;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            routines = await Http.GetFromJsonAsync<List<RoutineDto>>("api/routines");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.ToString();
+        }
+    }
+}
