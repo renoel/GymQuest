@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="153.62613mm"
-   height="156.24634mm"
-   viewBox="0 0 153.62613 156.24634"
+   width="176.332mm"
+   height="176.332mm"
+   viewBox="0 0 176.332 176.332"
    version="1.1"
    id="svg1"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -12,17 +12,6 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs1">
-    <linearGradient
-       id="linearGradient32">
-      <stop
-         style="stop-color:#7e0000;stop-opacity:1;"
-         offset="0.36315086"
-         id="stop31" />
-      <stop
-         style="stop-color:#ffffff;stop-opacity:0;"
-         offset="1"
-         id="stop32" />
-    </linearGradient>
     <linearGradient
        id="linearGradient71">
       <stop
@@ -314,9 +303,9 @@
          result="fbSourceGraphicAlpha"
          in="fbSourceGraphic"
          values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
-         id="feColorMatrix18" />
+         id="feColorMatrix4" />
       <feComposite
-         id="feComposite18"
+         id="feComposite4"
          in2="fbSourceGraphic"
          operator="arithmetic"
          k1="2.77556e-17"
@@ -326,35 +315,35 @@
          k3="0"
          k4="0" />
       <feColorMatrix
-         id="feColorMatrix19"
+         id="feColorMatrix5"
          in="composite1"
          values="1"
          type="saturate"
          result="colormatrix1" />
       <feFlood
-         id="feFlood19"
+         id="feFlood5"
          flood-opacity="1"
          flood-color="rgb(204,51,51)"
          result="flood1" />
       <feBlend
-         id="feBlend19"
+         id="feBlend9"
          in="flood1"
          in2="colormatrix1"
          mode="multiply"
          result="blend1" />
       <feBlend
-         id="feBlend20"
+         id="feBlend10"
          in2="blend1"
          mode="screen"
          result="blend2" />
       <feColorMatrix
-         id="feColorMatrix20"
+         id="feColorMatrix10"
          in="blend2"
          values="1"
          type="saturate"
          result="colormatrix2" />
       <feComposite
-         id="feComposite20"
+         id="feComposite10"
          in="colormatrix2"
          in2="fbSourceGraphic"
          operator="in"
@@ -460,28 +449,24 @@
        r="11.521949"
        gradientTransform="matrix(-1.5790076,-1.0162524,0.27499822,-0.4272801,235.22729,285.64499)"
        gradientUnits="userSpaceOnUse" />
-    <radialGradient
-       xlink:href="#linearGradient32"
-       id="radialGradient31"
-       cx="85.348404"
-       cy="115.96474"
-       fx="85.348404"
-       fy="115.96474"
-       r="55.026661"
-       gradientTransform="matrix(9.1032189e-7,2.7448281,-2.6636552,-2.1621495e-7,385.70308,-156.14349)"
-       gradientUnits="userSpaceOnUse" />
   </defs>
-  <ellipse
-     style="display:inline;fill:url(#radialGradient31);stroke:#550000;stroke-width:0"
-     id="path4"
-     cx="76.813057"
-     cy="78.123161"
-     rx="76.813057"
-     ry="78.123169" />
+  <g
+     id="layer6"
+     style="display:inline"
+     transform="translate(-16.834002,-60.334)">
+    <g
+       id="layer8"
+       style="display:inline">
+      <path
+         style="fill:#1a1a1a;stroke:#550000;stroke-width:0"
+         d="M 16.834003,60.333998 H 193.166 V 236.666 H 16.834003 Z"
+         id="path13" />
+    </g>
+  </g>
   <g
      id="layer2"
      style="display:none"
-     transform="translate(-28.186943,-70.37684)">
+     transform="translate(-16.834002,-60.334)">
     <g
        id="layer3">
       <path
@@ -546,8 +531,8 @@
   </g>
   <g
      id="layer1"
-     style="display:inline"
-     transform="translate(-28.186943,-70.37684)">
+     style="display:none"
+     transform="translate(-16.834002,-60.334)">
     <g
        id="g30"
        style="filter:url(#filter8)">
