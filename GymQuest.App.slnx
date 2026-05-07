@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="GymQuest.Api/GymQuest.Api.csproj" Id="81e798dd-2bc8-4dec-b6e5-9789fc353038" />
+  <Project Path="GymQuest.Data/GymQuest.Data.csproj" Id="75b13a64-c6e1-4cf5-95a0-2fb852915250" />
+  <Project Path="GymQuest.Models/GymQuest.Models.csproj" Id="794d998f-a337-4b00-966f-1dbe99461490" />
+  <Project Path="GymQuest/GymQuest.App.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

@@ -1,0 +1,35 @@
+﻿@page "/test-api"
+@using GymQuest.Models
+@inject HttpClient Http
+
+<MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="LoadWorkouts">
+    Test API
+</MudButton>
+
+@if (!string.IsNullOrWhiteSpace(message))
+{
+    <MudText>@message</MudText>
+}
+
+@foreach (var workout in workouts)
+{
+    <MudText>@workout.Name - @workout.EarnedXP XP</MudText>
+}
+
+@code {
+    private string message = "";
+    private List<Workout> workouts = new();
+
+    private async Task LoadWorkouts()
+    {
+        try
+        {
+            workouts = await Http.GetFromJsonAsync<List<Workout>>("api/workouts") ?? new();
+            message = $"Gelukt: {workouts.Count} workouts geladen.";
+        }
+        catch (Exception ex)
+        {
+            message = ex.ToString();
+        }
+    }
+}
