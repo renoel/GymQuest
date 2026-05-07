@@ -1,5 +1,7 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #27272f !important;
+    color: white;
 }
 
 a, .btn-link {
@@ -98,4 +100,13 @@ h1:focus {
     .flex-column, .navbar-brand {
         padding-left: env(safe-area-inset-left);
     }
+}
+
+.mud-nav-link, .mud-nav-link:visited, .mud-nav-link:active {
+    text-decoration: none !important;
+    color: #dddddd !important;
+}
+
+.mud-nav-link.active {
+    text-decoration: none !important;
 }
