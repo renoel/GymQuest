@@ -1,8 +1,77 @@
-﻿@page "/profile"
+﻿@using GymQuest.Models
+@page "/profile"
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 align-content-center">
-    <MudPaper Class="mud-theme-dark d-flex gap-2 align-items-center px-3 justify-content-center" Height="60px" Elevation="0">
-            <MudText Typo="Typo.h4">Profile</MudText>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 align-content-center"> 
+    <MudDivider />
+    <MudPaper Class="mud-theme-transparent d-flex gap-3 justify-content-center" Elevation="0">
+        <MudPaper Class="mud-theme-transparent d-flex flex-1 align-items-center justify-content-center" Width="125px" Elevation="0">
+            <MudAvatar Style="width: 125px; height: 125px; border-radius: 16px; box-shadow: 0 0 25px -5px var(--mud-palette-info-lighten);">
+                <MudImage Src="images/pfp.jpg"></MudImage>
+            </MudAvatar>
+        </MudPaper>
     </MudPaper>
-    <MudDivider/>
+    <MudPaper Class="mud-theme-transparent d-flex flex-column align-items-center justify-content-center" Elevation="0">
+        <MudText Color="Color.Default" Typo="Typo.h4">beetlelaaf</MudText>
+        <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">ID: 4984-2954-0374</MudText>
+    </MudPaper>
+    <MudPaper Class="mud-theme-default" Style="border-radius: 16px;" Elevation="0">
+        <MudPaper Class="mud-theme-transparent d-flex flex-1 align-items-center justify-content-center" Elevation="0">
+            <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+                <MudText Color="Color.Default" Typo="Typo.h5"><b>1,205,378</b></MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">Total Experience</MudText>
+            </MudPaper>
+            <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+                <MudText Color="Color.Default" Typo="Typo.h5"><b>232</b></MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">Level</MudText>
+            </MudPaper>
+        </MudPaper>
+        <MudPaper Class="mud-theme-transparent d-flex flex-1 align-items-center justify-content-center" Elevation="0">
+            <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+                <MudText Color="Color.Default" Typo="Typo.h5"><b>183</b></MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">Achievements</MudText>
+            </MudPaper>
+            <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+                <MudText Color="Color.Default" Typo="Typo.h5"><b>89</b></MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">Workouts</MudText>
+            </MudPaper>
+            <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+                <MudText Color="Color.Default" Typo="Typo.h5"><b>23</b></MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">Friends</MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudPaper>
+    <MudDivider />
+</MudContainer>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 align-content-center">
+    <MudDivider />
+    <MudPaper Class="mud-theme-transparent d-flex gap-2 align-items-center justify-content-center" Elevation="0">
+        <MudPaper Class="mud-theme-transparent flex-1 p-2 d-flex flex-column align-center" Width="100%" Elevation="0">
+            <MudProgressLinear Color="Color.Info" Value="50" Style="height: 30px; border-radius: 15px; overflow: hidden; border-radius: 16px; box-shadow: 0 0 15px -5px var(--mud-palette-info-lighten);">
+                <div class="d-flex justify-space-between w-100 px-3">
+                    <MudText Style="color: var(--mud-palette-text-primary);" Typo="Typo.caption"><b>4353xp</b></MudText>
+                    <MudText Style="color: var(--mud-palette-text-primary);" Typo="Typo.caption"><b>4800xp</b></MudText>
+                </div>
+            </MudProgressLinear>
+            <MudPaper Class="mud-theme-transparent flex-1 py-1 d-flex align-center justify-space-between" Width="100%" Elevation="0">
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">232</MudText>
+                <MudText Style="color: var(--mud-palette-action-disabled)" Typo="Typo.caption">233</MudText>
+            </MudPaper>
+        </MudPaper>
+    </MudPaper>
+</MudContainer>
+<MudContainer>
+    <MudPaper Class="mud-theme-transparent" Height="80px" Elevation="0"></MudPaper>
+</MudContainer>
+<MudContainer Class="fixed-bottom" Gutters="false" MaxWidth="MaxWidth.False">
+    <MudPaper Class="mud-theme-default d-flex gap-2 align-items-center justify-content-center" Outlined="true" Square="true" Height="60px">
+        <MudPaper Class="mud-theme-transparent d-flex flex-grow-1 justify-content-center" Height="100%" Elevation="0">
+            <MudIconButton Icon="@Icons.Material.Filled.Flare" Color="Color.Info" />
+        </MudPaper>
+        <MudPaper Class="mud-theme-transparent d-flex flex-grow-1 justify-content-center" Height="100%" Elevation="0">
+            <MudIconButton Icon="@Icons.Material.Filled.Fitbit" Color="Color.Info" />
+        </MudPaper>
+        <MudPaper Class="mud-theme-transparent d-flex flex-grow-1 justify-content-center" Height="100%" Elevation="0">
+            <MudIconButton Icon="@Icons.Material.Filled.Grain" Color="Color.Info" />
+        </MudPaper>
+    </MudPaper>
 </MudContainer>

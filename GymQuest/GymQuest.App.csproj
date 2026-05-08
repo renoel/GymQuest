@@ -75,5 +75,4 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\GymQuest.Models\GymQuest.Models.csproj" />
 	</ItemGroup>
-
 </Project>
