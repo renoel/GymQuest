@@ -76,4 +76,8 @@
 	  <ProjectReference Include="..\GymQuest.Models\GymQuest.Models.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\" />
+	</ItemGroup>
+
 </Project>
