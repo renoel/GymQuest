@@ -3,17 +3,12 @@
 @using GymQuest.Models.Dtos
 @inject HttpClient Http
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
-
-    <MudPaper Class="d-flex justify-space-around flex-grow-1 gap-4 align-content-center" Elevation="0">
-        <MudPaper Class="mud-theme-primary" Width="30px" Height="30px" />
-
-        <MudText Typo="Typo.h4">
-            Routines
-        </MudText>
-
-        <MudFab Color="Color.Dark" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" />
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 align-content-center">
+    <MudFab Class="position-fixed" Style="bottom: 24px; right: 24px; z-index: 1000;" Color="Color.Info" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" Elevation="0" />
+    <MudPaper Class="mud-theme-dark d-flex gap-2 align-items-center px-3 justify-content-center" Height="60px" Elevation="0">
+            <MudText Typo="Typo.h4">Routines</MudText>
     </MudPaper>
+    <MudDivider/>
 
 
     @if (!string.IsNullOrWhiteSpace(errorMessage))
@@ -36,44 +31,17 @@
     {
         @foreach (var routine in routines)
         {
-            <MudPaper Class="pa-4 mb-4" Elevation="2">
+            <MudPaper Class="pa-4" Elevation="0">
                 <MudText Typo="Typo.h5">
                     @routine.Name
                 </MudText>
 
-                <MudText Typo="Typo.body2" Class="mb-3">
+                <MudText Typo="Typo.body2">
                     @routine.Description
                 </MudText>
-
-                <MudDivider Class="my-3" />
-
-                @foreach (var exercise in routine.Exercises.OrderBy(e => e.OrderIndex))
-                {
-                    <MudPaper Class="pa-3 mb-2" Outlined="true">
-
-                        <MudText Typo="Typo.subtitle1">
-                            @exercise.OrderIndex. @exercise.ExerciseName
-                        </MudText>
-
-                        <MudText Typo="Typo.caption">
-                            @exercise.MuscleGroup • @exercise.Category • @exercise.BaseXP XP per set
-                        </MudText>
-
-                        @foreach (var set in exercise.Sets.OrderBy(s => s.SetNumber))
-                        {
-                            <MudText Typo="Typo.body2">
-                                Set @set.SetNumber:
-                                @(set.TargetWeight.HasValue ? $"{set.TargetWeight}kg" : "Bodyweight")
-                                x @set.TargetReps reps
-                            </MudText>
-                        }
-
-                    </MudPaper>
-                }
             </MudPaper>
         }
     }
-
 </MudContainer>
 
 @code {
