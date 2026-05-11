@@ -1,0 +1,34 @@
+@page "/profile/achievements"
+
+@inject AchievementApiClient AchievementApi
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 pt-4 align-content-center">
+    @if (achievements is null)
+    {
+        <MudProgressCircular Indeterminate="true" />
+    }
+    else
+    {
+        @foreach (var achievement in achievements)
+        {
+            <MudPaper Class="d-flex flex-row px-4 gap-4 mud-theme-transparent" Elevation="0">
+                <MudImage Src="@achievement.BadgeImageUrl" Width="60" Height="60"></MudImage>
+                <MudPaper Class="d-flex flex-column gap-1 mud-theme-transparent" Elevation="0">
+                    <MudText Typo="Typo.h6">@achievement.Name</MudText>
+                    <MudText Typo="Typo.body2">@achievement.Description</MudText>
+                    <MudText Typo="Typo.body2">@achievement.ExperienceReward XP</MudText>
+                </MudPaper>
+            </MudPaper>
+        }
+    }
+</MudContainer>
+
+
+@code {
+    private List<AchievementDto> achievements = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        achievements = await AchievementApi.GetAchievementsAsync();
+    }
+}

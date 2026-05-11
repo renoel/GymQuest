@@ -75,4 +75,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\GymQuest.Models\GymQuest.Models.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\images\badges\badge_1.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
 </Project>

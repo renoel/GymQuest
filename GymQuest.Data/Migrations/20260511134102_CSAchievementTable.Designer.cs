@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GymQuest.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507130152_SeedDefaultRoutines")]
-    partial class SeedDefaultRoutines
+    [Migration("20260511134102_CSAchievementTable")]
+    partial class CSAchievementTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,117 @@ namespace GymQuest.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GymQuest.Models.Exercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.Achievement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BadgeImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ExperienceReward")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Achievements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BadgeImageUrl = "images/badges/badge_1.png",
+                            Description = "Get 10k steps",
+                            ExperienceReward = 100,
+                            Name = "10k steps"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BadgeImageUrl = "images/badges/badge_2.png",
+                            Description = "Get 20k steps",
+                            ExperienceReward = 200,
+                            Name = "20k steps"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BadgeImageUrl = "images/badges/badge_3.png",
+                            Description = "Get 30k steps",
+                            ExperienceReward = 300,
+                            Name = "30k steps"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BadgeImageUrl = "images/badges/badge_4.png",
+                            Description = "Get 40k steps",
+                            ExperienceReward = 400,
+                            Name = "40k steps"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BadgeImageUrl = "images/badges/badge_5.png",
+                            Description = "Get 50k steps",
+                            ExperienceReward = 500,
+                            Name = "50k steps"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BadgeImageUrl = "images/badges/badge_6.png",
+                            Description = "Get 60k steps",
+                            ExperienceReward = 600,
+                            Name = "60k steps"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BadgeImageUrl = "images/badges/badge_7.png",
+                            Description = "Get 70k steps",
+                            ExperienceReward = 700,
+                            Name = "70k steps"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BadgeImageUrl = "images/badges/badge_8.png",
+                            Description = "Get 80k steps",
+                            ExperienceReward = 800,
+                            Name = "80k steps"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BadgeImageUrl = "images/badges/badge_9.png",
+                            Description = "Get 90k steps",
+                            ExperienceReward = 900,
+                            Name = "90k steps"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BadgeImageUrl = "images/badges/badge_10.png",
+                            Description = "Get 100k steps",
+                            ExperienceReward = 1000,
+                            Name = "100k steps"
+                        });
+                });
+
+            modelBuilder.Entity("GymQuest.Models.Entities.Exercise", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -127,16 +237,13 @@ namespace GymQuest.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GymQuest.Models.Routine", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.Routine", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -157,7 +264,6 @@ namespace GymQuest.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2026, 5, 7, 13, 1, 52, 165, DateTimeKind.Utc).AddTicks(3674),
                             Description = "Chest, shoulders and triceps",
                             IsDefault = true,
                             Name = "Push"
@@ -165,7 +271,6 @@ namespace GymQuest.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2026, 5, 7, 13, 1, 52, 165, DateTimeKind.Utc).AddTicks(4523),
                             Description = "Back and biceps",
                             IsDefault = true,
                             Name = "Pull"
@@ -173,14 +278,13 @@ namespace GymQuest.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2026, 5, 7, 13, 1, 52, 165, DateTimeKind.Utc).AddTicks(4525),
                             Description = "Heavy leg workout",
                             IsDefault = true,
                             Name = "Legs"
                         });
                 });
 
-            modelBuilder.Entity("GymQuest.Models.RoutineExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.RoutineExercise", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -203,7 +307,7 @@ namespace GymQuest.Data.Migrations
 
                     b.HasIndex("RoutineId");
 
-                    b.ToTable("RoutinesExercises");
+                    b.ToTable("RoutineExercises");
 
                     b.HasData(
                         new
@@ -271,7 +375,7 @@ namespace GymQuest.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GymQuest.Models.RoutineSet", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.RoutineSet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -366,7 +470,7 @@ namespace GymQuest.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GymQuest.Models.Workout", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.Workout", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -400,7 +504,7 @@ namespace GymQuest.Data.Migrations
                     b.ToTable("Workouts");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.WorkoutExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.WorkoutExercise", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -429,7 +533,7 @@ namespace GymQuest.Data.Migrations
                     b.ToTable("WorkoutExercises");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.WorkoutSet", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.WorkoutSet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -459,16 +563,16 @@ namespace GymQuest.Data.Migrations
                     b.ToTable("WorkoutSets");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.RoutineExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.RoutineExercise", b =>
                 {
-                    b.HasOne("GymQuest.Models.Exercise", "Exercise")
+                    b.HasOne("GymQuest.Models.Entities.Exercise", "Exercise")
                         .WithMany()
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GymQuest.Models.Routine", "Routine")
-                        .WithMany("Exercises")
+                    b.HasOne("GymQuest.Models.Entities.Routine", "Routine")
+                        .WithMany()
                         .HasForeignKey("RoutineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -478,9 +582,9 @@ namespace GymQuest.Data.Migrations
                     b.Navigation("Routine");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.RoutineSet", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.RoutineSet", b =>
                 {
-                    b.HasOne("GymQuest.Models.RoutineExercise", "RoutineExercise")
+                    b.HasOne("GymQuest.Models.Entities.RoutineExercise", "RoutineExercise")
                         .WithMany("Sets")
                         .HasForeignKey("RoutineExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -489,24 +593,24 @@ namespace GymQuest.Data.Migrations
                     b.Navigation("RoutineExercise");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.Workout", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.Workout", b =>
                 {
-                    b.HasOne("GymQuest.Models.Routine", "Routine")
+                    b.HasOne("GymQuest.Models.Entities.Routine", "Routine")
                         .WithMany()
                         .HasForeignKey("RoutineId");
 
                     b.Navigation("Routine");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.WorkoutExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.WorkoutExercise", b =>
                 {
-                    b.HasOne("GymQuest.Models.Exercise", "Exercise")
+                    b.HasOne("GymQuest.Models.Entities.Exercise", "Exercise")
                         .WithMany()
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GymQuest.Models.Workout", "Workout")
+                    b.HasOne("GymQuest.Models.Entities.Workout", "Workout")
                         .WithMany("Exercises")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -517,9 +621,9 @@ namespace GymQuest.Data.Migrations
                     b.Navigation("Workout");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.WorkoutSet", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.WorkoutSet", b =>
                 {
-                    b.HasOne("GymQuest.Models.WorkoutExercise", "WorkoutExercise")
+                    b.HasOne("GymQuest.Models.Entities.WorkoutExercise", "WorkoutExercise")
                         .WithMany("Sets")
                         .HasForeignKey("WorkoutExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -528,22 +632,17 @@ namespace GymQuest.Data.Migrations
                     b.Navigation("WorkoutExercise");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.Routine", b =>
-                {
-                    b.Navigation("Exercises");
-                });
-
-            modelBuilder.Entity("GymQuest.Models.RoutineExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.RoutineExercise", b =>
                 {
                     b.Navigation("Sets");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.Workout", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.Workout", b =>
                 {
                     b.Navigation("Exercises");
                 });
 
-            modelBuilder.Entity("GymQuest.Models.WorkoutExercise", b =>
+            modelBuilder.Entity("GymQuest.Models.Entities.WorkoutExercise", b =>
                 {
                     b.Navigation("Sets");
                 });

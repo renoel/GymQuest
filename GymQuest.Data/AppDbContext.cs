@@ -17,6 +17,7 @@ public class AppDbContext : DbContext
     public DbSet<Routine> Routines{ get; set; }
     public DbSet<RoutineSet> RoutineSets{ get; set; }
     public DbSet<RoutineExercise> RoutineExercises{ get; set; }
+    public DbSet<Achievement> Achievements { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

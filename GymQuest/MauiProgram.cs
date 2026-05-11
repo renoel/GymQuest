@@ -19,6 +19,7 @@ public static class MauiProgram
         builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
         builder.Services.AddScoped<RoutineApiClient>();
+        builder.Services.AddScoped<AchievementApiClient>();
 
 #if ANDROID
         var apiBaseUrl = "http://10.0.2.2:5230/";
