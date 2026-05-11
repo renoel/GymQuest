@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GymQuest.Models;
+namespace GymQuest.Models.Entities;
 
 public class RoutineSet
 {

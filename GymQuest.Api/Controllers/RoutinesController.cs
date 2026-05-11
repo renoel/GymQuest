@@ -17,42 +17,16 @@ namespace GymQuest.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<RoutineDto>>> GetRoutines()
+        public async Task<ActionResult<List<RoutineSummaryDto>>> GetRoutines()
         {
             var routines = await _db.Routines
                 .AsNoTracking()
-                .Include(r => r.Exercises)
-                    .ThenInclude(re => re.Exercise)
-                .Include(r => r.Exercises)
-                    .ThenInclude(re => re.Sets)
                 .OrderBy(r => r.Id)
-                .Select(r => new RoutineDto
+                .Select(r => new RoutineSummaryDto
                 {
                     Id = r.Id,
                     Name = r.Name,
-                    Description = r.Description,
-                    Exercises = r.Exercises
-                        .OrderBy(re => re.OrderIndex)
-                        .Select(re => new RoutineExerciseDto
-                        {
-                            Id = re.Id,
-                            OrderIndex = re.OrderIndex,
-                            ExerciseName = re.Exercise.Name,
-                            MuscleGroup = re.Exercise.MuscleGroup,
-                            Category = re.Exercise.Category,
-                            BaseXP = re.Exercise.BaseXP,
-                            Sets = re.Sets
-                                .OrderBy(s => s.SetNumber)
-                                .Select(s => new RoutineSetDto
-                                {
-                                    SetNumber = s.SetNumber,
-                                    TargetReps = s.TargetReps,
-                                    TargetWeight = s.TargetWeight,
-                                    RestSeconds = s.RestSeconds
-                                })
-                                .ToList()
-                        })
-                        .ToList()
+                    Description = r.Description
                 })
                 .ToListAsync();
 

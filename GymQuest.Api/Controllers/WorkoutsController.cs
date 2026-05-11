@@ -1,5 +1,5 @@
 ﻿using GymQuest.Data;
-using GymQuest.Models;
+using GymQuest.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,11 +1,10 @@
 ﻿namespace GymQuest.Models.Dtos
 {
-    public class RoutineDto
+    public class RoutineSummaryDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public List<RoutineExerciseDto> Exercises { get; set; } = new();
     }
 
     public class RoutineExerciseDto

@@ -1,41 +1,41 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GymQuest.ApiClients;
+using Microsoft.Extensions.Logging;
 using MudBlazor.Services;
 
-namespace GymQuest
+namespace GymQuest;
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
+        var builder = MauiApp.CreateBuilder();
 
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
-
-            builder.Services.AddMauiBlazorWebView();
-            builder.Services.AddMudServices();
-
-#if ANDROID
-            var apiBaseUrl = "http://10.0.2.2:5230/";
-#else
-            var apiBaseUrl = "http://localhost:5230/";
-#endif
-
-            builder.Services.AddScoped(sp => new HttpClient
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
             {
-                BaseAddress = new Uri(apiBaseUrl)
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
 
-#if DEBUG
-            builder.Services.AddBlazorWebViewDeveloperTools();
-            builder.Logging.AddDebug();
+        builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddMudServices();
+        builder.Services.AddScoped<RoutineApiClient>();
+
+#if ANDROID
+        var apiBaseUrl = "http://10.0.2.2:5230/";
+#else
+        var apiBaseUrl = "http://localhost:5230/";
 #endif
 
-            return builder.Build();
-        }
+        builder.Services.AddScoped(sp => new HttpClient
+        {
+            BaseAddress = new Uri(apiBaseUrl)
+        });
+
+#if DEBUG
+        builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Logging.AddDebug();
+#endif
+
+        return builder.Build();
     }
 }

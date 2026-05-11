@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GymQuest.Models;
+namespace GymQuest.Models.Entities;
 
 public class Routine
 {
@@ -10,5 +10,4 @@ public class Routine
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public bool IsDefault { get; set; } = true;
-    public List<RoutineExercise> Exercises { get; set; } = new();
 }

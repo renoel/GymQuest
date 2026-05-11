@@ -1,7 +1,7 @@
 @page "/routines"
 
-@using GymQuest.Models.Dtos
-@inject HttpClient Http
+@inject RoutineApiClient RoutineApi
+@inject NavigationManager Nav
 
 <MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column gap-3 align-content-center">
     <MudFab Class="position-fixed" Style="bottom: 24px; right: 24px; z-index: 1000;" Color="Color.Info" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" Elevation="0" />
@@ -11,21 +11,9 @@
     <MudDivider/>
 
 
-    @if (!string.IsNullOrWhiteSpace(errorMessage))
-    {
-        <MudAlert Severity="Severity.Error">
-            @errorMessage
-        </MudAlert>
-    }
-    else if (routines is null)
+    @if (routines is null)
     {
         <MudProgressCircular Indeterminate="true" />
-    }
-    else if (routines.Count == 0)
-    {
-        <MudAlert Severity="Severity.Info">
-            Geen routines gevonden.
-        </MudAlert>
     }
     else
     {
@@ -45,18 +33,10 @@
 </MudContainer>
 
 @code {
-    private List<RoutineDto>? routines;
-    private string? errorMessage;
+    private List<RoutineSummaryDto> routines = new();
 
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            routines = await Http.GetFromJsonAsync<List<RoutineDto>>("api/routines");
-        }
-        catch (Exception ex)
-        {
-            errorMessage = ex.ToString();
-        }
+        routines = await RoutineApi.GetRoutinesAsync();
     }
 }
